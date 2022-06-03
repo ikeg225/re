@@ -13,52 +13,83 @@ struct ContentView: View {
     @State private var password: String = ""
     @State private var isLoginMode = false
     
+    
     var body: some View {
         NavigationView {
-            ScrollView {
-                Image("relogo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width - 150)
-                                
-                VStack {
-                    TextField("", text: $email)
-                        .foregroundColor(.white)
-                        .placeholder(when: email.isEmpty) {
-                            Text("Email")
-                                .foregroundColor(Color(hex: "8BC3F6"))
-                                .bold()
-                                .padding([.vertical], 5)
+            ZStack {
+                ScrollView {
+                    Image("relogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: UIScreen.main.bounds.width - 150)
+                    
+                    ZStack (alignment: .bottomTrailing) {
+                        VStack {
+                            TextField("", text: $email)
+                                .foregroundColor(.white)
+                                .placeholder(when: email.isEmpty) {
+                                    Text("Email")
+                                        .foregroundColor(Color(hex: "8BC3F6"))
+                                        .padding([.vertical], 5)
+                                        .font(Font.custom("Varela", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                                }
+                                .frame(width: UIScreen.main.bounds.width - 130)
+                                .padding(.top, 50)
+                                .font(Font.custom("Varela", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                            Rectangle()
+                                .frame(width: UIScreen.main.bounds.width - 130, height: 1)
+                                .foregroundColor(.white)
+                            SecureField("", text: $password)
+                                .foregroundColor(.white)
+                                .textFieldStyle(.plain)
+                                .placeholder(when: password.isEmpty) {
+                                    Text("Password")
+                                        .foregroundColor(Color(hex: "8BC3F6"))
+                                        .padding([.vertical], 5)
+                                        .font(Font.custom("Varela", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                                }
+                                .padding(.top, 20)
+                                .frame(width: UIScreen.main.bounds.width - 130)
+                                .font(Font.custom("Varela", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                            Rectangle()
+                                .frame(width: UIScreen.main.bounds.width - 130, height: 1)
+                                .foregroundColor(.white)
+                            Button {
+                                // log in
+                            } label: {
+                                Text("Log In")
+                                    .frame(width: 100, height: 40)
+                                    .background(RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                        .fill(.white))
+                                    .font(Font.custom("Inter-Medium", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                                    .foregroundColor(Color(hex: "1786ED"))
+                            }
+                            .padding(.top, 15)
+                            Text("Don't have an account?")
+                                .padding(.bottom, 2)
+                                .padding(.top, 15)
+                                .foregroundColor(.white)
+                                .font(Font.custom("Inter-Medium", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                            Text("Sign Up")
+                                .underline()
+                                .foregroundColor(.white)
+                                .font(Font.custom("Inter-Medium", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                            Spacer()
                         }
-                        .frame(width: UIScreen.main.bounds.width - 130)
-                        .padding(.top, 50)
-                    Rectangle()
-                        .frame(width: UIScreen.main.bounds.width - 130, height: 1)
-                        .foregroundColor(.white)
-                    SecureField("", text: $password)
-                        .foregroundColor(.white)
-                        .textFieldStyle(.plain)
-                        .placeholder(when: password.isEmpty) {
-                            Text("Password")
-                                .foregroundColor(Color(hex: "8BC3F6"))
-                                .bold()
-                                .padding([.vertical], 5)
-                        }
-                        .padding(.top, 20)
-                        .frame(width: UIScreen.main.bounds.width - 130)
-                    Rectangle()
-                        .frame(width: UIScreen.main.bounds.width - 130, height: 1)
-                        .foregroundColor(.white)
-                    Spacer()
-                }
-                .background(
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
-                        .fill(Color(hex: "1786ED"))
+                        .background(
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .fill(Color(hex: "1786ED"))
+                                .frame(width: UIScreen.main.bounds.width - 75, height: 400)
+                                .shadow(color: Color(hex: "A5CDFF"), radius: 5, x: 10, y: 10)
+                        )
                         .frame(width: UIScreen.main.bounds.width - 75, height: 400)
-                        .shadow(color: Color(hex: "A5CDFF"), radius: 5, x: 10, y: 10)
-                )
-                .frame(width: UIScreen.main.bounds.width - 75, height: 400)
-                .padding()
+                        .padding()
+                        Image("redstar")
+                            .frame(width: 30, height: 30)
+                            .padding()
+                    }
+                    .padding()
+                }
             }
         }
     }
@@ -157,5 +188,6 @@ extension View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewInterfaceOrientation(.portrait)
     }
 }
