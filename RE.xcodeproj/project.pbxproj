@@ -10,6 +10,8 @@
 		2A17477E28488F020016F12E /* REApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17477D28488F020016F12E /* REApp.swift */; };
 		2A17478028488F020016F12E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17477F28488F020016F12E /* ContentView.swift */; };
 		2A17478528488F070016F12E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A17478428488F070016F12E /* Preview Assets.xcassets */; };
+		2A34413C2849DF3000609119 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2A34413B2849DF3000609119 /* README.md */; };
+		2A34413E2849DF7000609119 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2A34413D2849DF7000609119 /* .gitignore */; };
 		2A4084C32849333C006748D2 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4084C22849333C006748D2 /* SplashScreenView.swift */; };
 		2A4084C428498185006748D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A17478128488F070016F12E /* Assets.xcassets */; };
 		2A4084C8284982CD006748D2 /* Varela-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A4084C7284982A0006748D2 /* Varela-Regular.ttf */; };
@@ -36,6 +38,8 @@
 		2A17477F28488F020016F12E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2A17478128488F070016F12E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A17478428488F070016F12E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2A34413B2849DF3000609119 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2A34413D2849DF7000609119 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2A4084C22849333C006748D2 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		2A4084C7284982A0006748D2 /* Varela-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Varela-Regular.ttf"; sourceTree = "<group>"; };
 		2A4084C92849838F006748D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 		2A17477128488F020016F12E = {
 			isa = PBXGroup;
 			children = (
+				2A34413B2849DF3000609119 /* README.md */,
+				2A34413D2849DF7000609119 /* .gitignore */,
 				2A17477C28488F020016F12E /* RE */,
 				2A17477B28488F020016F12E /* Products */,
 			);
@@ -201,6 +207,8 @@
 				2A17478528488F070016F12E /* Preview Assets.xcassets in Resources */,
 				2A4084D5284986F8006748D2 /* Inter-Regular.ttf in Resources */,
 				2A4084DB284986F8006748D2 /* Inter-Thin.ttf in Resources */,
+				2A34413E2849DF7000609119 /* .gitignore in Resources */,
+				2A34413C2849DF3000609119 /* README.md in Resources */,
 				2A4084D3284986F8006748D2 /* Inter-ExtraLight.ttf in Resources */,
 				2A4084D9284986F8006748D2 /* Inter-Medium.ttf in Resources */,
 				2A4084D6284986F8006748D2 /* Inter-Light.ttf in Resources */,
