@@ -10,12 +10,28 @@ import Firebase
 
 struct SignUpView: View {
     
+    @EnvironmentObject var dataManager: DataManager
+    
+    @State private var name: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var avatar: String = "blue"
     
     var body: some View {
         VStack {
+            TextField("", text: $name)
+                .foregroundColor(.white)
+                .placeholder(when: name.isEmpty) {
+                    Text("Name")
+                        .foregroundColor(Color(hex: "8BC3F6"))
+                        .padding([.vertical], 5)
+                        .font(Font.custom("Varela", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                }
+                .frame(width: UIScreen.main.bounds.width - 130)
+                .padding(.top, 50)
+                .font(Font.custom("Varela", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+            Rectangle()
+                .frame(width: UIScreen.main.bounds.width - 130, height: 1)
+                .foregroundColor(.white)
             TextField("", text: $email)
                 .foregroundColor(.white)
                 .placeholder(when: email.isEmpty) {
@@ -25,7 +41,7 @@ struct SignUpView: View {
                         .font(Font.custom("Varela", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
                 }
                 .frame(width: UIScreen.main.bounds.width - 130)
-                .padding(.top, 50)
+                .padding(.top, 20)
                 .font(Font.custom("Varela", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
             Rectangle()
                 .frame(width: UIScreen.main.bounds.width - 130, height: 1)
@@ -45,26 +61,7 @@ struct SignUpView: View {
             Rectangle()
                 .frame(width: UIScreen.main.bounds.width - 130, height: 1)
                 .foregroundColor(.white)
-            HStack {
-                Button {
-                    self.avatar = "blue"
-                } label: {
-                    
-                    Image("blueavatar")
-                        .resizable()
-                        .frame(width: 75, height: 75)
-                        .opacity((avatar == "blue") ? 1 : 0.5)
-                }
-                Button {
-                    self.avatar = "pink"
-                } label: {
-                    Image("pinkavatar")
-                        .resizable()
-                        .frame(width: 75, height: 75)
-                        .opacity((avatar == "pink") ? 1 : 0.5)
-                }
-            }
-            .padding(.vertical, 20)
+                .padding(.bottom, 30)
             Button {
                 register()
             } label: {
@@ -82,6 +79,9 @@ struct SignUpView: View {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if error != nil {
                 print(error!.localizedDescription)
+            } else {
+                let partnerCode = Int.random(in: 10000...99999)
+                dataManager.addUser(userID: result!.user.uid, partnerCode: partnerCode, name: name)
             }
         }
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A1218CD28595FCA003E3341 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1218CC28595FCA003E3341 /* DataManager.swift */; };
 		2A17477E28488F020016F12E /* REApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17477D28488F020016F12E /* REApp.swift */; };
 		2A17478028488F020016F12E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A17477F28488F020016F12E /* ContentView.swift */; };
 		2A17478528488F070016F12E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A17478428488F070016F12E /* Preview Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A1218CC28595FCA003E3341 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2A17477A28488F020016F12E /* RE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A17477D28488F020016F12E /* REApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REApp.swift; sourceTree = "<group>"; };
 		2A17477F28488F020016F12E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				2A17477D28488F020016F12E /* REApp.swift */,
 				2A17477F28488F020016F12E /* ContentView.swift */,
 				2A63D1FC285926CC00EFB392 /* OTPViewModel.swift */,
+				2A1218CC28595FCA003E3341 /* DataManager.swift */,
 				2AA697382853EE6D00ABA8E1 /* RecordView.swift */,
 				2A4084E72849CE34006748D2 /* LoggedView.swift */,
 				2A4084DE2849AB3E006748D2 /* SignUpView.swift */,
@@ -235,6 +238,7 @@
 				2A4084E82849CE35006748D2 /* LoggedView.swift in Sources */,
 				2A63D1FD285926CC00EFB392 /* OTPViewModel.swift in Sources */,
 				2AA697392853EE6D00ABA8E1 /* RecordView.swift in Sources */,
+				2A1218CD28595FCA003E3341 /* DataManager.swift in Sources */,
 				2A4084C32849333C006748D2 /* SplashScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

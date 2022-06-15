@@ -17,6 +17,8 @@ struct ContentView: View {
     @StateObject var otpModel: OTPViewModel = .init()
     @FocusState var activeField: OTPField?
     
+    @EnvironmentObject var dataManager: DataManager
+    
     var body: some View {
         if isUserLoggedIn {
             RecordView()
@@ -30,29 +32,30 @@ struct ContentView: View {
             }
         } else {
             if showPartnerCode {
-                
-                VStack {
-                    Text("Your Code")
-                    .font(Font.custom("Inter-Regular", size: UIFont.preferredFont(forTextStyle: .title2).pointSize))
-                    Text(verbatim: "\(partnerCode)")
-                    .font(Font.custom("Inter-Bold", size: UIFont.preferredFont(forTextStyle: .title1).pointSize))
-                    .padding(.top, 2)
-                    Text("or")
-                    .font(Font.custom("Inter-Regular", size: UIFont.preferredFont(forTextStyle: .title2).pointSize))
-                    .padding(.top, 10)
-                    .padding(.bottom, 20)
-                    Text("Enter Your Partner's Code")
-                    .font(Font.custom("Inter-Regular", size: UIFont.preferredFont(forTextStyle: .title2).pointSize))
-                    OTPField()
-                        .padding()
-                        .onChange(of: otpModel.otpFields) { newValue in
-                            OTPCondition(value: newValue)
+                ZStack {
+                    VStack {
+                        Text("Your Code")
+                        .font(Font.custom("Inter-Regular", size: UIFont.preferredFont(forTextStyle: .title2).pointSize))
+                        Text(verbatim: "\(partnerCode)")
+                        .font(Font.custom("Inter-Bold", size: UIFont.preferredFont(forTextStyle: .title1).pointSize))
+                        .padding(.top, 2)
+                        Text("or")
+                        .font(Font.custom("Inter-Regular", size: UIFont.preferredFont(forTextStyle: .title2).pointSize))
+                        .padding(.top, 10)
+                        .padding(.bottom, 20)
+                        Text("Enter Your Partner's Code")
+                        .font(Font.custom("Inter-Regular", size: UIFont.preferredFont(forTextStyle: .title2).pointSize))
+                        OTPField()
+                            .padding()
+                            .onChange(of: otpModel.otpFields) { newValue in
+                                OTPCondition(value: newValue)
+                            }
+                        Button {
+                            showPartnerCode = false
+                            isUserLoggedIn = true
+                        } label: {
+                            Text("Next")
                         }
-                    Button {
-                        showPartnerCode = false
-                        isUserLoggedIn = true
-                    } label: {
-                        Text("Next")
                     }
                     
                     VStack {
@@ -62,7 +65,7 @@ struct ContentView: View {
                             Image("codestar")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 250)
+                                .frame(width: 150)
                                 .padding(.trailing, 0)
                                 .padding(.bottom, 0)
                           }
@@ -79,7 +82,13 @@ struct ContentView: View {
                                 let signin = user!.metadata.lastSignInDate
                                 if creation == signin {
                                     showPartnerCode = true
-                                    partnerCode = Int.random(in: 10000...99999)
+                                    dataManager.fetchCodeFromID(userID: user!.uid) { (id) in
+                                        if let id = id {
+                                            partnerCode = id
+                                        } else {
+                                            partnerCode = 0
+                                        }
+                                    }
                                 } else {
                                     isUserLoggedIn = true
                                 }

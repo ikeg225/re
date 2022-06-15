@@ -10,6 +10,7 @@ import Firebase
 
 @main
 struct REApp: App {
+    @StateObject var dataManager = DataManager()
     
     init() {
         FirebaseApp.configure()
@@ -18,6 +19,7 @@ struct REApp: App {
     var body: some Scene {
         WindowGroup {
             SplashScreenView()
+                .environmentObject(dataManager)
         }
     }
 }
