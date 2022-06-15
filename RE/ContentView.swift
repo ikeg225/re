@@ -6,14 +6,141 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
     
     @State private var isUserLoggedIn = false
+    @State private var showPartnerCode = false
+    @State private var partnerCode = 0
+    
+    @StateObject var otpModel: OTPViewModel = .init()
+    @FocusState var activeField: OTPField?
     
     var body: some View {
-        NavigationView {
-            LoggedView()
+        if isUserLoggedIn {
+            RecordView()
+            .onAppear() {
+                Auth.auth().addStateDidChangeListener { auth, user in
+                    if user != nil {
+                    } else {
+                        isUserLoggedIn = false
+                    }
+                }
+            }
+        } else {
+            if showPartnerCode {
+                
+                VStack {
+                    Text("Your Code")
+                    .font(Font.custom("Inter-Regular", size: UIFont.preferredFont(forTextStyle: .title2).pointSize))
+                    Text(verbatim: "\(partnerCode)")
+                    .font(Font.custom("Inter-Bold", size: UIFont.preferredFont(forTextStyle: .title1).pointSize))
+                    .padding(.top, 2)
+                    Text("or")
+                    .font(Font.custom("Inter-Regular", size: UIFont.preferredFont(forTextStyle: .title2).pointSize))
+                    .padding(.top, 10)
+                    .padding(.bottom, 20)
+                    Text("Enter Your Partner's Code")
+                    .font(Font.custom("Inter-Regular", size: UIFont.preferredFont(forTextStyle: .title2).pointSize))
+                    OTPField()
+                        .padding()
+                        .onChange(of: otpModel.otpFields) { newValue in
+                            OTPCondition(value: newValue)
+                        }
+                    Button {
+                        showPartnerCode = false
+                        isUserLoggedIn = true
+                    } label: {
+                        Text("Next")
+                    }
+                    
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Image("codestar")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 250)
+                                .padding(.trailing, 0)
+                                .padding(.bottom, 0)
+                          }
+                    }
+                }
+            }
+            else {
+                NavigationView {
+                    LoggedView()
+                    .onAppear() {
+                        Auth.auth().addStateDidChangeListener { auth, user in
+                            if user != nil {
+                                let creation = user!.metadata.creationDate
+                                let signin = user!.metadata.lastSignInDate
+                                if creation == signin {
+                                    showPartnerCode = true
+                                    partnerCode = Int.random(in: 10000...99999)
+                                } else {
+                                    isUserLoggedIn = true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func OTPCondition(value: [String]) {
+        for index in 0..<4 {
+            if value[index].count == 1 && activeStateForIndex(index: index) == activeField {
+                activeField = activeStateForIndex(index: index + 1)
+            }
+        }
+        
+        for index in 1...4 {
+            if value[index].isEmpty && !value[index - 1].isEmpty {
+                activeField = activeStateForIndex(index: index - 1)
+            }
+        }
+        
+        for index in 0..<5 {
+            if value[index].count > 1 {
+                otpModel.otpFields[index] = String(value[index].last!)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func OTPField()->some View {
+        HStack(spacing: 20){
+            ForEach(0..<5,id: \.self){index in
+                ZStack() {
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(Color(hex: "EA566E"))
+                        .frame(width: 50, height: 50)
+                        .shadow(color: Color(hex: "FFB2C2"), radius: 2, x: 5, y: 5)
+                    
+                    TextField("", text: $otpModel.otpFields[index])
+                        .keyboardType(.numberPad)
+                        .textContentType(.oneTimeCode)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white)
+                        .accentColor(.clear)
+                        .focused($activeField, equals: activeStateForIndex(index: index))
+                }
+                .frame(width: 40)
+            }
+        }
+    }
+    
+    func activeStateForIndex(index: Int)->OTPField {
+        switch index {
+        case 0: return .field1
+        case 1: return .field2
+        case 2: return .field3
+        case 3: return .field4
+        default: return .field5
         }
     }
 }
@@ -107,7 +234,6 @@ extension View {
     }
 }
 
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -119,4 +245,12 @@ struct ContentView_Previews: PreviewProvider {
                 .previewInterfaceOrientation(.portrait)
         }
     }
+}
+
+enum OTPField {
+    case field1
+    case field2
+    case field3
+    case field4
+    case field5
 }
