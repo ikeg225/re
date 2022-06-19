@@ -21,7 +21,7 @@ struct ContentView: View {
     
     var body: some View {
         if isUserLoggedIn {
-            RecordView()
+            InAppView()
             .onAppear() {
                 Auth.auth().addStateDidChangeListener { auth, user in
                     if user != nil {

@@ -33,6 +33,9 @@
 		2A4084E82849CE35006748D2 /* LoggedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4084E72849CE34006748D2 /* LoggedView.swift */; };
 		2A63D1FD285926CC00EFB392 /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63D1FC285926CC00EFB392 /* OTPViewModel.swift */; };
 		2AA697392853EE6D00ABA8E1 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA697382853EE6D00ABA8E1 /* RecordView.swift */; };
+		2AAC6E2B285EBDEA008F305D /* InAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC6E2A285EBDEA008F305D /* InAppView.swift */; };
+		2AAC6E2D285EBEA6008F305D /* RememberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC6E2C285EBEA6008F305D /* RememberView.swift */; };
+		2AAC6E2F285EBEB3008F305D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAC6E2E285EBEB3008F305D /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,9 @@
 		2A4084E72849CE34006748D2 /* LoggedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedView.swift; sourceTree = "<group>"; };
 		2A63D1FC285926CC00EFB392 /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
 		2AA697382853EE6D00ABA8E1 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		2AAC6E2A285EBDEA008F305D /* InAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppView.swift; sourceTree = "<group>"; };
+		2AAC6E2C285EBEA6008F305D /* RememberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberView.swift; sourceTree = "<group>"; };
+		2AAC6E2E285EBEB3008F305D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,9 @@
 				2A4084C92849838F006748D2 /* Info.plist */,
 				2A17477D28488F020016F12E /* REApp.swift */,
 				2A17477F28488F020016F12E /* ContentView.swift */,
+				2AAC6E2A285EBDEA008F305D /* InAppView.swift */,
+				2AAC6E2C285EBEA6008F305D /* RememberView.swift */,
+				2AAC6E2E285EBEB3008F305D /* ProfileView.swift */,
 				2A63D1FC285926CC00EFB392 /* OTPViewModel.swift */,
 				2A1218CC28595FCA003E3341 /* DataManager.swift */,
 				2AA697382853EE6D00ABA8E1 /* RecordView.swift */,
@@ -232,9 +241,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A17478028488F020016F12E /* ContentView.swift in Sources */,
+				2AAC6E2B285EBDEA008F305D /* InAppView.swift in Sources */,
 				2A4084DF2849AB3E006748D2 /* SignUpView.swift in Sources */,
 				2A17477E28488F020016F12E /* REApp.swift in Sources */,
+				2AAC6E2F285EBEB3008F305D /* ProfileView.swift in Sources */,
 				2A4084DD2849A8D2006748D2 /* LogInView.swift in Sources */,
+				2AAC6E2D285EBEA6008F305D /* RememberView.swift in Sources */,
 				2A4084E82849CE35006748D2 /* LoggedView.swift in Sources */,
 				2A63D1FD285926CC00EFB392 /* OTPViewModel.swift in Sources */,
 				2AA697392853EE6D00ABA8E1 /* RecordView.swift in Sources */,
