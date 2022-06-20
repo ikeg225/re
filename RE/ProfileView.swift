@@ -9,6 +9,9 @@ import SwiftUI
 import Firebase
 
 struct ProfileView: View {
+    @State private var uploads = true
+    @State private var alertTime = Date(timeIntervalSinceReferenceDate: -28800)
+    
     init() {
         UITableView.appearance().backgroundColor = .clear
     }
@@ -51,10 +54,11 @@ struct ProfileView: View {
                 .listRowSeparatorTint(Color(hex: "1786ED"))
                 
                 Section(header: Text("Notification").font(Font.custom("Inter-Bold", size: UIFont.preferredFont(forTextStyle: .title3).pointSize))) {
-                    Text("Set Daily Alert")
+                    DatePicker("Set Daily Alert", selection: $alertTime, displayedComponents: .hourAndMinute)
                         .font(Font.custom("Inter-Regular", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
-                    Text("Partner’s Uploads")
+                    Toggle("Partner’s Uploads", isOn: $uploads)
                         .font(Font.custom("Inter-Regular", size: UIFont.preferredFont(forTextStyle: .body).pointSize))
+                        .toggleStyle(SwitchToggleStyle(tint: Color(hex: "1786ED")))
                 }
                 .listRowSeparatorTint(Color(hex: "1786ED"))
                 
@@ -82,6 +86,23 @@ struct ProfileView: View {
                     }
                 }
                 .listRowSeparatorTint(Color(hex: "1786ED"))
+                
+                HStack (spacing: 30) {
+                    Image("pointyred")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50)
+                    Image("bluestar")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50)
+                    Image("pointyred")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50)
+                }
+                .listRowSeparatorTint(.clear)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
             .listStyle(GroupedListStyle())
             .frame(width: UIScreen.main.bounds.width - 20)
